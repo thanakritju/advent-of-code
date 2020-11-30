@@ -3,11 +3,11 @@ from checksum import checksum, get_common_id
 
 def test_checksum():
     test_input = [
-        "abcdef", 
+        "abcdef",
         "bababc",
-        "abbcde", 
+        "abbcde",
         "abcccd",
-        "aabcdd", 
+        "aabcdd",
         "abcdee",
         "ababab",
     ]
@@ -15,19 +15,21 @@ def test_checksum():
 
     assert actual == 12
 
+
 def test_get_common_id():
     test_input = [
-        "abcde", 
+        "abcde",
         "fghij",
-        "klmno", 
+        "klmno",
         "pqrst",
-        "fguij", 
+        "fguij",
         "axcye",
         "wvxyz",
     ]
     actual = get_common_id(test_input)
 
     assert actual == "fgij"
+
 
 def test_checksum_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day2/box_ids.txt", "r")
