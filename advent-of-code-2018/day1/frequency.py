@@ -17,6 +17,3 @@ def calculate_first_reaches_twice(frequency_list):
 			sums.add(current_value)
 			last_sum = current_value
 			i += 1
-
-def is_duplicate(my_list):
-	return len(my_list) != len(set(my_list))

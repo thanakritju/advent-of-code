@@ -1,6 +1,6 @@
 import pytest
 
-from main import calculate_frequency, calculate_first_reaches_twice
+from frequency import calculate_frequency, calculate_first_reaches_twice
 
 
 @pytest.mark.parametrize("test_input,expected", 
