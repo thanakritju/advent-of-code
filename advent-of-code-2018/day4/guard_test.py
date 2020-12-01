@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from guard import guard, parse_action
+from guard import guard, parse_action, State, reduce_guard, Guard, update_guard
 
 
 def test_guard():
@@ -31,6 +31,27 @@ def test_guard():
     assert actual == 240
 
 
+def test_reduce_guard():
+    state = State()
+
+    state = reduce_guard(state, "[1518-11-01 00:00] Guard #10 begins shift")
+    state = reduce_guard(state, "[1518-11-01 00:05] falls asleep")
+    state = reduce_guard(state, "[1518-11-01 00:25] wakes up")
+
+    assert state.active_guard.sleep_time_in_minute == 20
+
+
+def test_update_guard():
+    guard = Guard(0)
+    guard.last_start_sleep_time_stamp = datetime(1518, 11, 1, 0, 5)
+
+    update_guard(guard, datetime(1518, 11, 1, 0, 10))
+
+    assert guard.sleep_time_in_minute == 5
+    assert guard.frequency[5] == 1
+    assert guard.frequency[10] == 0
+
+
 @pytest.mark.parametrize(
     "test_input,expected",
     [
@@ -48,3 +69,13 @@ def test_parse_action(test_input, expected):
     actual = parse_action(test_input)
 
     assert actual == expected
+
+
+@pytest.mark.puzzle
+def test_guard_for_puzzle_input():
+    puzzle_input = open("advent-of-code-2018/day4/guard_logs.txt", "r")
+    content = puzzle_input.read().splitlines()
+
+    actual = guard(content)
+
+    assert False
