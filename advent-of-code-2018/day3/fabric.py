@@ -44,4 +44,5 @@ def extract_input(fabric):
 def get_the_isolate_id(fabrics):
     fabrics_set = transform_to_set(fabrics)
     intersections = get_all_intersections(fabrics_set)
+
     return 0
