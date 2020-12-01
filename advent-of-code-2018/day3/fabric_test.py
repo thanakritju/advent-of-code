@@ -50,4 +50,4 @@ def test_get_overlap_for_puzzle_input():
 
     actual = get_overlap(content)
 
-    assert actual == True
+    assert actual == 106501

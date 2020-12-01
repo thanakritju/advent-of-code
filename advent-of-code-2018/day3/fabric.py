@@ -3,20 +3,21 @@ import re
 
 def get_overlap(fabrics):
     intersections = set()
+    fabrics_set = list(map(extract_input, fabrics))
     length = len(fabrics)
     for index in range(length):
         for another_index in range(index + 1, length):
             intersections.update(get_intersection(
-                fabrics[index], fabrics[another_index]))
+                fabrics_set[index], fabrics_set[another_index]))
     return len(intersections)
 
 
 def is_overlap(fabric, another_fabric):
-    return bool(get_intersection(fabric, another_fabric))
+    return bool(get_intersection(extract_input(fabric), extract_input(another_fabric)))
 
 
 def get_intersection(fabric, another_fabric):
-    return extract_input(fabric).intersection(extract_input(another_fabric))
+    return fabric.intersection(another_fabric)
 
 
 def extract_input(fabric):
