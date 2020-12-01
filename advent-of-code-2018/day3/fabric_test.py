@@ -73,4 +73,4 @@ def test_get_overlap_for_puzzle_input():
 
     actual = get_the_isolate_id(content)
 
-    assert actual == 23722
+    assert actual == 632

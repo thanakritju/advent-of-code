@@ -78,4 +78,4 @@ def test_guard_for_puzzle_input():
 
     actual = guard(content)
 
-    assert False
+    assert actual == 102688
