@@ -64,3 +64,13 @@ def test_get_overlap_for_puzzle_input():
     actual = get_overlap(content)
 
     assert actual == 106501
+
+
+@pytest.mark.puzzle
+def test_get_overlap_for_puzzle_input():
+    puzzle_input = open("advent-of-code-2018/day3/fabrics.txt", "r")
+    content = puzzle_input.read().splitlines()
+
+    actual = get_the_isolate_id(content)
+
+    assert actual == 632

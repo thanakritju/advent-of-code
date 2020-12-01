@@ -45,4 +45,8 @@ def get_the_isolate_id(fabrics):
     fabrics_set = transform_to_set(fabrics)
     intersections = get_all_intersections(fabrics_set)
 
-    return 0
+    for number, each_fabric in enumerate(fabrics_set):
+        if not bool(intersections.intersection(each_fabric)):
+            return number + 1
+
+    return -1
