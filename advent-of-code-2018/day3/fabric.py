@@ -2,14 +2,22 @@ import re
 
 
 def get_overlap(fabrics):
+    fabrics_set = transform_to_set(fabrics)
+    return len(get_all_intersections(fabrics_set))
+
+
+def transform_to_set(fabrics):
+    return list(map(extract_input, fabrics))
+
+
+def get_all_intersections(fabrics_set):
     intersections = set()
-    fabrics_set = list(map(extract_input, fabrics))
-    length = len(fabrics)
+    length = len(fabrics_set)
     for index in range(length):
         for another_index in range(index + 1, length):
             intersections.update(get_intersection(
                 fabrics_set[index], fabrics_set[another_index]))
-    return len(intersections)
+    return intersections
 
 
 def is_overlap(fabric, another_fabric):
@@ -34,4 +42,6 @@ def extract_input(fabric):
 
 
 def get_the_isolate_id(fabrics):
+    fabrics_set = transform_to_set(fabrics)
+    intersections = get_all_intersections(fabrics_set)
     return 0
