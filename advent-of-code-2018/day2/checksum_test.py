@@ -33,26 +33,28 @@ def test_get_common_id():
     assert actual == "fgij"
 
 
-@pytest.mark.parametrize("test_input,expected",
-                         [
-                             (("abcde", "fghij"), False),
-                             (("abcde", "wvxyz"), False),
-                             (("fguij", "fghij"), True),
-                         ]
-                         )
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (("abcde", "fghij"), False),
+        (("abcde", "wvxyz"), False),
+        (("fguij", "fghij"), True),
+    ]
+)
 def test_is_close(test_input, expected):
     actual = is_close(test_input[0], test_input[1])
 
     assert actual == expected
 
 
-@pytest.mark.parametrize("test_input,expected",
-                         [
-                             (("abcde", "fghij"), ""),
-                             (("abcde", "axcye"), "ace"),
-                             (("fguij", "fghij"), "fgij"),
-                         ]
-                         )
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (("abcde", "fghij"), ""),
+        (("abcde", "axcye"), "ace"),
+        (("fguij", "fghij"), "fgij"),
+    ]
+)
 def test_is_close(test_input, expected):
     actual = drop_duplicate(test_input[0], test_input[1])
 
