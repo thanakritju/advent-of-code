@@ -2,33 +2,40 @@ from datetime import datetime
 
 import pytest
 
-from guard import guard, parse_action, State, reduce_guard, Guard, update_guard
+from guard import guard, parse_action, State, reduce_guard, Guard, update_guard, find_most_frequency
+
+
+test_input = [
+    "[1518-11-01 00:00] Guard #10 begins shift",
+    "[1518-11-01 00:05] falls asleep",
+    "[1518-11-01 00:25] wakes up",
+    "[1518-11-01 00:30] falls asleep",
+    "[1518-11-01 00:55] wakes up",
+    "[1518-11-01 23:58] Guard #99 begins shift",
+    "[1518-11-02 00:40] falls asleep",
+    "[1518-11-02 00:50] wakes up",
+    "[1518-11-03 00:05] Guard #10 begins shift",
+    "[1518-11-03 00:24] falls asleep",
+    "[1518-11-03 00:29] wakes up",
+    "[1518-11-04 00:02] Guard #99 begins shift",
+    "[1518-11-04 00:36] falls asleep",
+    "[1518-11-04 00:46] wakes up",
+    "[1518-11-05 00:03] Guard #99 begins shift",
+    "[1518-11-05 00:45] falls asleep",
+    "[1518-11-05 00:55] wakes up",
+]
 
 
 def test_guard():
-    test_input = [
-        "[1518-11-01 00:00] Guard #10 begins shift",
-        "[1518-11-01 00:05] falls asleep",
-        "[1518-11-01 00:25] wakes up",
-        "[1518-11-01 00:30] falls asleep",
-        "[1518-11-01 00:55] wakes up",
-        "[1518-11-01 23:58] Guard #99 begins shift",
-        "[1518-11-02 00:40] falls asleep",
-        "[1518-11-02 00:50] wakes up",
-        "[1518-11-03 00:05] Guard #10 begins shift",
-        "[1518-11-03 00:24] falls asleep",
-        "[1518-11-03 00:29] wakes up",
-        "[1518-11-04 00:02] Guard #99 begins shift",
-        "[1518-11-04 00:36] falls asleep",
-        "[1518-11-04 00:46] wakes up",
-        "[1518-11-05 00:03] Guard #99 begins shift",
-        "[1518-11-05 00:45] falls asleep",
-        "[1518-11-05 00:55] wakes up",
-    ]
-
     actual = guard(test_input)
 
     assert actual == 240
+
+
+def test_find_most_frequency():
+    actual = find_most_frequency(test_input)
+
+    assert actual == 4455
 
 
 def test_reduce_guard():
@@ -79,3 +86,13 @@ def test_guard_for_puzzle_input():
     actual = guard(content)
 
     assert actual == 102688
+
+
+@pytest.mark.puzzle
+def test_find_most_frequency_for_puzzle_input():
+    puzzle_input = open("advent-of-code-2018/day4/guard_logs.txt", "r")
+    content = puzzle_input.read().splitlines()
+
+    actual = find_most_frequency(content)
+
+    assert actual == 56901

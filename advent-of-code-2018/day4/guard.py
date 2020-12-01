@@ -8,11 +8,10 @@ SLEEP_ACTION = 'sleep'
 
 
 class Guard:
-    def __init__(self, id, time_stamp=None):
+    def __init__(self, id):
         self.id = id
         self.sleep_time_in_minute = 0
-        self.is_sleeping = False
-        self.last_start_sleep_time_stamp = time_stamp
+        self.last_start_sleep_time_stamp = None
         self.frequency = dict.fromkeys(range(0, 60), 0)
 
 
@@ -27,17 +26,38 @@ def guard(actions):
     for action in sorted(actions):
         state = reduce_guard(state, action)
 
-    most_sleepy_guard = None
-    for guard in state.all_guards:
-        if most_sleepy_guard is None:
-            most_sleepy_guard = guard
-        elif most_sleepy_guard.sleep_time_in_minute <= guard.sleep_time_in_minute:
+    most_sleepy_guard = state.all_guards[0]
+    for guard in state.all_guards[1:]:
+        if most_sleepy_guard.sleep_time_in_minute <= guard.sleep_time_in_minute:
             most_sleepy_guard = guard
 
-    most_frequency = max(most_sleepy_guard.frequency,
-                         key=most_sleepy_guard.frequency.get)
+    most_frequency = get_most_frequecy(most_sleepy_guard)
 
     return most_frequency * most_sleepy_guard.id
+
+
+def find_most_frequency(actions):
+    state = State()
+    for action in sorted(actions):
+        state = reduce_guard(state, action)
+
+    most_sleepy_guard = state.all_guards[0]
+    most_frequency_times = get_most_frequecy_times(most_sleepy_guard)
+    for guard in state.all_guards[1:]:
+        new_frequency_times = get_most_frequecy_times(guard)
+        if most_frequency_times < new_frequency_times:
+            most_sleepy_guard = guard
+            most_frequency_times = most_frequency_times
+
+    return get_most_frequecy(most_sleepy_guard) * most_sleepy_guard.id
+
+
+def get_most_frequecy(guard):
+    return max(guard.frequency, key=guard.frequency.get)
+
+
+def get_most_frequecy_times(guard):
+    return guard.frequency[get_most_frequecy(guard)]
 
 
 def reduce_guard(state, action):
@@ -53,14 +73,10 @@ def reduce_guard(state, action):
             state.active_guard = guard
 
     elif action_type == WAKE_ACTION:
-        if state.active_guard.is_sleeping:
-            update_guard(state.active_guard, time_stamp)
-            state.active_guard.is_sleeping = False
+        update_guard(state.active_guard, time_stamp)
 
     elif action_type == SLEEP_ACTION:
-        if not state.active_guard.is_sleeping:
-            state.active_guard.is_sleeping = True
-            state.active_guard.last_start_sleep_time_stamp = time_stamp
+        state.active_guard.last_start_sleep_time_stamp = time_stamp
 
     return state
 
@@ -77,10 +93,7 @@ def update_guard(guard, current_time):
     sleeping_time = get_minutes(start_time, current_time)
     guard.sleep_time_in_minute += sleeping_time
     for index in range(start_time.minute, start_time.minute + sleeping_time):
-        try:
-            guard.frequency[index] += 1
-        except:
-            pass
+        guard.frequency[index] += 1
 
 
 def get_minutes(time_stamp, time_stamp_2):
