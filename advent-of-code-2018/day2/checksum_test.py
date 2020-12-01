@@ -13,6 +13,7 @@ def test_checksum():
         "abcdee",
         "ababab",
     ]
+
     actual = checksum(test_input)
 
     assert actual == 12
@@ -28,6 +29,7 @@ def test_get_common_id():
         "axcye",
         "wvxyz",
     ]
+
     actual = get_common_id(test_input)
 
     assert actual == "fgij"

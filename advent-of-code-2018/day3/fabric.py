@@ -31,3 +31,7 @@ def extract_input(fabric):
             fabric_set.add((x_start + x_index, y_start + y_index))
 
     return fabric_set
+
+
+def get_the_isolate_id(fabrics):
+    return 0
