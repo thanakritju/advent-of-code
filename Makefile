@@ -1,9 +1,15 @@
 .PHONY: install test
 
-default: test
+default: unittest
 
 install:
 	pipenv install --dev --skip-lock
+
+unittest:
+ifndef VIRTUAL_ENV
+	$(error must run target inside python virtualenv)
+endif
+	pytest -m "not puzzle"
 
 test:
 ifndef VIRTUAL_ENV

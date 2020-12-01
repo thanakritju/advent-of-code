@@ -33,6 +33,7 @@ def test_calculate_first_reaches_twice(test_input, expected):
     assert actual == expected
 
 
+@pytest.mark.puzzle
 def test_calculate_frequency_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day1/frequency.txt", "r")
     content = puzzle_input.read().split()
@@ -42,6 +43,7 @@ def test_calculate_frequency_for_puzzle_input():
     assert actual == 538
 
 
+@pytest.mark.puzzle
 def test_calculate_frequency_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day1/frequency.txt", "r")
     content = puzzle_input.read().split()

@@ -44,6 +44,7 @@ def test_extract_input(test_input, expected):
     assert actual == expected
 
 
+@pytest.mark.puzzle
 def test_get_overlap_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day3/fabrics.txt", "r")
     content = puzzle_input.read().splitlines()

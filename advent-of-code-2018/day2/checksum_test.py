@@ -61,6 +61,7 @@ def test_is_close(test_input, expected):
     assert actual == expected
 
 
+@pytest.mark.puzzle
 def test_checksum_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day2/box_ids.txt", "r")
     content = puzzle_input.read().split()
@@ -70,6 +71,7 @@ def test_checksum_for_puzzle_input():
     assert actual == 8118
 
 
+@pytest.mark.puzzle
 def test_checksum_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day2/box_ids.txt", "r")
     content = puzzle_input.read().split()
