@@ -23,5 +23,27 @@ def transform_to_dict(my_string):
     return my_string_dict
 
 
+def is_close(first_string, second_string):
+    number_of_differ = 0
+    for index in range(len(first_string)):
+        if first_string[index] != second_string[index]:
+            number_of_differ += 1
+        if number_of_differ == 2:
+            return False
+    return True
+
+
+def drop_duplicate(first_string, second_string):
+    out_string = ""
+    for index in range(len(first_string)):
+        if first_string[index] == second_string[index]:
+            out_string += first_string[index]
+    return out_string
+
+
 def get_common_id(box_ids):
-    return "fgij"
+    for index in range(len(box_ids)):
+        for another_index in range(index + 1, len(box_ids)):
+            if is_close(box_ids[index], box_ids[another_index]):
+                return drop_duplicate(box_ids[index], box_ids[another_index])
+    return ""

@@ -1,4 +1,6 @@
-from checksum import checksum, get_common_id
+import pytest
+
+from checksum import checksum, get_common_id, is_close, drop_duplicate
 
 
 def test_checksum():
@@ -31,6 +33,32 @@ def test_get_common_id():
     assert actual == "fgij"
 
 
+@pytest.mark.parametrize("test_input,expected",
+                         [
+                             (("abcde", "fghij"), False),
+                             (("abcde", "wvxyz"), False),
+                             (("fguij", "fghij"), True),
+                         ]
+                         )
+def test_is_close(test_input, expected):
+    actual = is_close(test_input[0], test_input[1])
+
+    assert actual == expected
+
+
+@pytest.mark.parametrize("test_input,expected",
+                         [
+                             (("abcde", "fghij"), ""),
+                             (("abcde", "axcye"), "ace"),
+                             (("fguij", "fghij"), "fgij"),
+                         ]
+                         )
+def test_is_close(test_input, expected):
+    actual = drop_duplicate(test_input[0], test_input[1])
+
+    assert actual == expected
+
+
 def test_checksum_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day2/box_ids.txt", "r")
     content = puzzle_input.read().split()
@@ -38,3 +66,12 @@ def test_checksum_for_puzzle_input():
     actual = checksum(content)
 
     assert actual == 8118
+
+
+def test_checksum_for_puzzle_input():
+    puzzle_input = open("advent-of-code-2018/day2/box_ids.txt", "r")
+    content = puzzle_input.read().split()
+
+    actual = get_common_id(content)
+
+    assert actual == 'jbbenqtlaxhivmwyscjukztdp'
