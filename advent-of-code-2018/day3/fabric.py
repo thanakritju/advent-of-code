@@ -11,13 +11,15 @@ def transform_to_set(fabrics):
 
 
 def get_all_intersections(fabrics_set):
-    intersections = set()
-    length = len(fabrics_set)
-    for index in range(length):
-        for another_index in range(index + 1, length):
-            intersections.update(get_intersection(
-                fabrics_set[index], fabrics_set[another_index]))
-    return intersections
+    intersection_dict = dict()
+    for fabric_set in fabrics_set:
+        for coordinate in fabric_set:
+            try:
+                intersection_dict[coordinate] += 1
+            except KeyError:
+                intersection_dict[coordinate] = 1
+
+    return set([k for (k,v) in intersection_dict.items() if v > 1])
 
 
 def is_overlap(fabric, another_fabric):

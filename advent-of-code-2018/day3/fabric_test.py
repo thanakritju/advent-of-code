@@ -67,7 +67,7 @@ def test_get_overlap_for_puzzle_input():
 
 
 @pytest.mark.puzzle
-def test_get_overlap_for_puzzle_input():
+def test_get_the_isolate_id_for_puzzle_input():
     puzzle_input = open("advent-of-code-2018/day3/fabrics.txt", "r")
     content = puzzle_input.read().splitlines()
 

@@ -32,7 +32,7 @@ def test_password_check_v2(test_input, expected):
 
 
 @pytest.mark.puzzle
-def test_get_sum_of_three_entries_for_puzzle():
+def test_count_valid_password_for_puzzle():
     puzzle_input = open("advent-of-code-2020/day2/passwords.txt", "r")
     content = puzzle_input.read().splitlines()
 
@@ -42,7 +42,7 @@ def test_get_sum_of_three_entries_for_puzzle():
 
 
 @pytest.mark.puzzle
-def test_get_sum_of_three_entries_for_puzzle():
+def test_count_valid_password_v2_for_puzzle():
     puzzle_input = open("advent-of-code-2020/day2/passwords.txt", "r")
     content = puzzle_input.read().splitlines()
 
