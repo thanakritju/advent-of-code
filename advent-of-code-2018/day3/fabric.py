@@ -15,7 +15,7 @@ def get_all_intersections(fabrics_set):
     length = len(fabrics_set)
     for index in range(length):
         for another_index in range(index + 1, length):
-            intersections.union(get_intersection(
+            intersections.update(get_intersection(
                 fabrics_set[index], fabrics_set[another_index]))
     return intersections
 
