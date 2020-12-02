@@ -1,6 +1,6 @@
 import pytest
 
-from fabric import get_overlap, is_overlap, extract_input, get_the_isolate_id
+from fabric import get_overlap, extract_input, get_the_isolate_id
 
 
 def test_get_overlap():
@@ -13,20 +13,6 @@ def test_get_overlap():
     actual = get_overlap(test_input)
 
     assert actual == 4
-
-
-@pytest.mark.parametrize(
-    "test_input,expected",
-    [
-        (("#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4"), True),
-        (("#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2"), False),
-        (("#1 @ 1,3: 4x4", "#3 @ 5,5: 2x2"), False),
-    ]
-)
-def test_is_overlap(test_input, expected):
-    actual = is_overlap(test_input[0], test_input[1])
-
-    assert actual == expected
 
 
 @pytest.mark.parametrize(

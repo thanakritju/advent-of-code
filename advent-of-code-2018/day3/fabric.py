@@ -19,15 +19,7 @@ def get_all_intersections(fabrics_set):
             except KeyError:
                 intersection_dict[coordinate] = 1
 
-    return set([k for (k,v) in intersection_dict.items() if v > 1])
-
-
-def is_overlap(fabric, another_fabric):
-    return bool(get_intersection(extract_input(fabric), extract_input(another_fabric)))
-
-
-def get_intersection(fabric, another_fabric):
-    return fabric.intersection(another_fabric)
+    return set([k for (k, v) in intersection_dict.items() if v > 1])
 
 
 def extract_input(fabric):
