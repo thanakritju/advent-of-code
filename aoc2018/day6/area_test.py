@@ -3,19 +3,26 @@ import pytest
 from area import biggest_area, area_within_distance
 
 
-def test_biggest_area():
-    test_input = [
-        "1, 1",
-        "1, 6",
-        "8, 3",
-        "3, 4",
-        "5, 5",
-        "8, 9",
-    ]
+test_input = [
+    "1, 1",
+    "1, 6",
+    "8, 3",
+    "3, 4",
+    "5, 5",
+    "8, 9",
+]
 
+
+def test_biggest_area():
     actual = biggest_area(test_input)
 
     assert actual == 17
+
+
+def test_biggest_area():
+    actual = area_within_distance(test_input, 32)
+
+    assert actual == 16
 
 
 @pytest.mark.puzzle

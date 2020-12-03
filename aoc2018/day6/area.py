@@ -45,7 +45,7 @@ def area_within_distance(coordinates: StringInput, sum_distances: int) -> int:
                     condinate[1], condinate[0], column_number, row_number)
                 for condinate in input_list
             ]
-            if (sum(distances) <= 10000):
+            if (sum(distances) < sum_distances):
                 area += 1
 
     return area
