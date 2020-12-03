@@ -30,6 +30,27 @@ def biggest_area(coordinates: StringInput) -> int:
     return max([area for canidate, area in areas.items() if canidate not in infinite_canidates])
 
 
+def area_within_distance(coordinates: StringInput, sum_distances: int) -> int:
+    input_list = parse(coordinates)
+    max_x = max(list(map(lambda x: x[0], input_list))) + 3
+    max_y = max(list(map(lambda x: x[1], input_list))) + 3
+
+    space = create_space(max_x, max_y)
+
+    area = 0
+    for row_number, row in enumerate(space):
+        for column_number, column in enumerate(row):
+            distances = [
+                manhattan_distance(
+                    condinate[1], condinate[0], column_number, row_number)
+                for condinate in input_list
+            ]
+            if (sum(distances) <= 10000):
+                area += 1
+
+    return area
+
+
 def get_infinite_canidates(space: Space) -> Sequence[int]:
     canidates = space[0]
     canidates += space[len(space) - 1]
