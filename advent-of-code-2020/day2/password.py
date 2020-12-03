@@ -9,7 +9,7 @@ def password_check(password: str) -> bool:
         if char == char_required:
             count += 1
 
-    return int(lower) <= count and count <= int(upper)
+    return int(lower) <= count <= int(upper)
 
 
 def password_check_v2(password: str) -> bool:
@@ -35,7 +35,7 @@ def count_valid_password_v2(passwords: Sequence[str]) -> int:
     return sum([password_check_v2(password) for password in passwords])
 
 
-def parse_input(password: str) -> Tuple:
+def parse_input(password: str) -> Tuple[int, int, str, str]:
     policy, password = password.split(":")
     number_range, char_required = policy.split(" ")
     password = password.strip()
