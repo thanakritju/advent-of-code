@@ -35,7 +35,7 @@ def test_is_reacted(test_input, expected):
 
 @pytest.mark.puzzle
 def test_react_polymer_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2018/day5/polymers.txt", "r")
+    puzzle_input = open("aoc2018/day5/polymers.txt", "r")
     content = puzzle_input.read()
 
     actual = react_polymer(content)
@@ -45,7 +45,7 @@ def test_react_polymer_for_puzzle_input():
 
 @pytest.mark.puzzle
 def test_react_polymer_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2018/day5/polymers.txt", "r")
+    puzzle_input = open("aoc2018/day5/polymers.txt", "r")
     content = puzzle_input.read()
 
     actual = optimized_react_polymer(content)

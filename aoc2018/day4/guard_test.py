@@ -80,7 +80,7 @@ def test_parse_action(test_input, expected):
 
 @pytest.mark.puzzle
 def test_guard_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2018/day4/guard_logs.txt", "r")
+    puzzle_input = open("aoc2018/day4/guard_logs.txt", "r")
     content = puzzle_input.read().splitlines()
 
     actual = guard(content)
@@ -90,7 +90,7 @@ def test_guard_for_puzzle_input():
 
 @pytest.mark.puzzle
 def test_find_most_frequency_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2018/day4/guard_logs.txt", "r")
+    puzzle_input = open("aoc2018/day4/guard_logs.txt", "r")
     content = puzzle_input.read().splitlines()
 
     actual = find_most_frequency(content)

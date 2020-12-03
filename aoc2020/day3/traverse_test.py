@@ -41,8 +41,9 @@ def test_traverse_with_different_move(test_input, expected):
     assert tree_found == expected
 
 
+@pytest.mark.puzzle
 def test_traverse_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2020/day3/patterns.txt", "r")
+    puzzle_input = open("aoc2020/day3/patterns.txt", "r")
     content = puzzle_input.read().splitlines()
 
     tree_found = traverse(content)
@@ -50,8 +51,9 @@ def test_traverse_for_puzzle_input():
     assert tree_found == 176
 
 
+@pytest.mark.puzzle
 def test_traverse_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2020/day3/patterns.txt", "r")
+    puzzle_input = open("aoc2020/day3/patterns.txt", "r")
     content = puzzle_input.read().splitlines()
 
     tree_found = traverse(content, 1, 1)

@@ -65,7 +65,7 @@ def test_is_close(test_input, expected):
 
 @pytest.mark.puzzle
 def test_checksum_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2018/day2/box_ids.txt", "r")
+    puzzle_input = open("aoc2018/day2/box_ids.txt", "r")
     content = puzzle_input.read().split()
 
     actual = checksum(content)
@@ -75,7 +75,7 @@ def test_checksum_for_puzzle_input():
 
 @pytest.mark.puzzle
 def test_checksum_for_puzzle_input():
-    puzzle_input = open("advent-of-code-2018/day2/box_ids.txt", "r")
+    puzzle_input = open("aoc2018/day2/box_ids.txt", "r")
     content = puzzle_input.read().split()
 
     actual = get_common_id(content)

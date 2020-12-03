@@ -33,7 +33,7 @@ def test_password_check_v2(test_input, expected):
 
 @pytest.mark.puzzle
 def test_count_valid_password_for_puzzle():
-    puzzle_input = open("advent-of-code-2020/day2/passwords.txt", "r")
+    puzzle_input = open("aoc2020/day2/passwords.txt", "r")
     content = puzzle_input.read().splitlines()
 
     actual = count_valid_password(content)
@@ -43,7 +43,7 @@ def test_count_valid_password_for_puzzle():
 
 @pytest.mark.puzzle
 def test_count_valid_password_v2_for_puzzle():
-    puzzle_input = open("advent-of-code-2020/day2/passwords.txt", "r")
+    puzzle_input = open("aoc2020/day2/passwords.txt", "r")
     content = puzzle_input.read().splitlines()
 
     actual = count_valid_password_v2(content)
