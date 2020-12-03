@@ -15,3 +15,12 @@ def test_order():
     actual = order(test_input)
 
     assert actual == "CABDFE"
+
+
+def test_order_for_puzzle_input():
+    puzzle_input = open("aoc2018/day7/instructions.txt", "r")
+    content = puzzle_input.read().splitlines()
+
+    actual = order(content)
+
+    assert actual == "OCPUEFIXHRGWDZABTQJYMNKVSL"
