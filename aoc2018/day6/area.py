@@ -1,4 +1,4 @@
-from typing import Sequence, Tuple
+from typing import Sequence, Tuple, Dict
 import pprint
 
 
@@ -23,8 +23,35 @@ def biggest_area(coordinates: StringInput) -> int:
             ]
             space[row_number][column_number] = get_min_index(distances)
 
-    render_space(space)
-    return space
+    infinite_canidates = get_infinite_canidates(space)
+    areas = get_area_for_each_canidates(space)
+
+    return max([area for canidate, area in areas.items() if canidate not in infinite_canidates])
+
+
+def get_infinite_canidates(space: Space) -> Sequence[int]:
+    infinite_canidates = set()
+    for row_number, row in enumerate(space):
+        for column_number, canidate in enumerate(row):
+            if (
+                row_number == 0 or
+                row_number == len(space) - 1 or
+                column_number == 0 or
+                column_number == len(row) - 1
+            ):
+                infinite_canidates.add(canidate)
+    return infinite_canidates
+
+
+def get_area_for_each_canidates(space: Space) -> Dict[int, int]:
+    area = dict()
+    for row_number, row in enumerate(space):
+        for column_number, canidate in enumerate(row):
+            try:
+                area[canidate] += 1
+            except KeyError:
+                area[canidate] = 1
+    return area
 
 
 def get_min_index(distances: Sequence[int]) -> int:

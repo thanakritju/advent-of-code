@@ -26,3 +26,12 @@ def test_biggest_area():
     actual = biggest_area(test_input)
 
     assert actual == 17
+
+
+def test_biggest_area_for_puzzle_input():
+    puzzle_input = open("aoc2018/day6/coordinates.txt", "r")
+    content = puzzle_input.read().splitlines()
+
+    actual = biggest_area(content)
+
+    assert actual == 5941
