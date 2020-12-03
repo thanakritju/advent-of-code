@@ -1,4 +1,5 @@
 from typing import Sequence, Tuple, Dict
+from collections import Counter
 import pprint
 
 
@@ -30,27 +31,18 @@ def biggest_area(coordinates: StringInput) -> int:
 
 
 def get_infinite_canidates(space: Space) -> Sequence[int]:
-    infinite_canidates = set()
-    for row_number, row in enumerate(space):
-        for column_number, canidate in enumerate(row):
-            if (
-                row_number == 0 or
-                row_number == len(space) - 1 or
-                column_number == 0 or
-                column_number == len(row) - 1
-            ):
-                infinite_canidates.add(canidate)
-    return infinite_canidates
+    canidates = space[0]
+    canidates += space[len(space) - 1]
+    canidates += list(map(lambda x: x[0], space))
+    canidates += list(map(lambda x: x[len(x) - 1], space))
+    return set(canidates)
 
 
 def get_area_for_each_canidates(space: Space) -> Dict[int, int]:
-    area = dict()
+    area = Counter()
     for row_number, row in enumerate(space):
         for column_number, canidate in enumerate(row):
-            try:
-                area[canidate] += 1
-            except KeyError:
-                area[canidate] = 1
+            area[canidate] += 1
     return area
 
 
