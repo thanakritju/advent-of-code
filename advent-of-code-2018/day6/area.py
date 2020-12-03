@@ -41,7 +41,7 @@ def parse(coordinates: StringInput) -> CoordinateList:
     return list(map(lambda x: (int(x.split(",")[0]), int(x.split(",")[1])), coordinates))
 
 
-def create_space(width, height) -> Space:
+def create_space(width: int, height: int) -> Space:
     return [[0 for column in range(width)] for row in range(height)]
 
 
