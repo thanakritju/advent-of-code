@@ -6,9 +6,8 @@ def order(instructions: Sequence[str]) -> str:
     edges = set(map(parse_input, instructions))
     sources = set(map(lambda x: x[0], edges))
     dests = set(map(lambda x: x[1], edges))
-    chars = sources.union(dests)
 
-    queue = list(sources.difference(dests))
+    queue = sorted(list(sources.difference(dests)))
     out = []
     while (len(queue) != 0):
         node = queue.pop(0)
