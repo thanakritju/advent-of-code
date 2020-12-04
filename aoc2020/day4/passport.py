@@ -14,19 +14,18 @@ required_fields = {
 
 
 def count_valid_passport(passports: Sequence[str]) -> int:
-    count = 0
-    for passport in passports:
-        if all([find_field(field, passport) for field in required_fields.keys()]):
-            count += 1
-    return count
+    return sum([
+        all([find_field(field, passport) for field in required_fields.keys()])
+        for passport in passports
+    ])
 
 
 def count_valid_passport_with_validation(passports: Sequence[str]) -> int:
-    count = 0
-    for passport in passports:
-        if all([find_and_validate_field(field, passport) for field in required_fields.keys()]):
-            count += 1
-    return count
+    return sum([
+        all([find_and_validate_field(field, passport)
+             for field in required_fields.keys()])
+        for passport in passports
+    ])
 
 
 def find_field(field_name: str, passport: str) -> str:
