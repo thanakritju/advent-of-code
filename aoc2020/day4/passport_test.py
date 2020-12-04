@@ -96,12 +96,13 @@ def test_find_field(test_field, expected):
         ("pid", "0123456789", False),
     ]
 )
-def test_find_field(test_field, field_value, expected):
+def test_validate_field(test_field, field_value, expected):
     actual = validate_field(test_field, field_value)
 
     assert actual == expected
 
 
+@pytest.mark.puzzle
 def test_count_valid_passport_for_puzzle_input():
     puzzle_input = open("aoc2020/day4/passports.txt", "r")
     content = puzzle_input.read().split("\n\n")
@@ -111,6 +112,7 @@ def test_count_valid_passport_for_puzzle_input():
     assert actual == 228
 
 
+@pytest.mark.puzzle
 def test_count_valid_passport_with_validation_for_puzzle_input():
     puzzle_input = open("aoc2020/day4/passports.txt", "r")
     content = puzzle_input.read().split("\n\n")
