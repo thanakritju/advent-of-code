@@ -1,5 +1,4 @@
 import re
-import pprint
 
 
 RE_BAG_RECORD = r"^(?P<bag_parent>.*?) contain (?P<bag_child>no other bags|.*?).$"
@@ -75,8 +74,3 @@ def extract_bag(bag_string):
     if number == "":
         return key, None
     return key, int(number)
-
-
-def render_space(matrix):
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(matrix)
