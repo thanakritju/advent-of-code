@@ -1,29 +1,22 @@
 from answer import count_answer, count_answered_by_everyone
 
 
-def test_count_answer():
-    test_input = [
-        ["abc"],
-        ["a", "b", "c"],
-        ["ab", "ac"],
-        ["a", "a", "a", "a"],
-        ["b"]
-    ]
+test_input = [
+    ["abc"],
+    ["a", "b", "c"],
+    ["ab", "ac"],
+    ["a", "a", "a", "a"],
+    ["b"]
+]
 
+
+def test_count_answer():
     actual = count_answer(test_input)
 
     assert actual == 11
 
 
 def test_count_answer():
-    test_input = [
-        ["abc"],
-        ["a", "b", "c"],
-        ["ab", "ac"],
-        ["a", "a", "a", "a"],
-        ["b"]
-    ]
-
     actual = count_answered_by_everyone(test_input)
 
     assert actual == 6
