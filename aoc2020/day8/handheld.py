@@ -37,8 +37,7 @@ def run(actions):
 
 def run_list(action_list):
     state = State(action_list)
-    is_program_valid = False
-    while not (state.isCurrentPointerVisited() or state.isTerminatedCorrectly()):
+    while not state.isCurrentPointerVisited() and not state.isTerminatedCorrectly():
         state = dispatch(state, action_list[state.pointer])
 
     return state
@@ -46,7 +45,6 @@ def run_list(action_list):
 
 def find_correct_program(actions):
     action_list = parse_input(actions)
-    acc = 0
     for index, action in enumerate(action_list):
         temp_list = copy.deepcopy(action_list)
         if action.type == "jmp":
