@@ -1,3 +1,5 @@
+import pytest
+
 from handheld import run, find_correct_program
 
 
@@ -23,6 +25,7 @@ def test_run():
     assert actual == 8
 
 
+@pytest.mark.puzzle
 def test_run_for_puzzle_input():
     puzzle_input = open("aoc2020/day8/instructions.txt", "r")
     content = puzzle_input.read().splitlines()
