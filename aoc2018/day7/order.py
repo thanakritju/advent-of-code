@@ -1,7 +1,6 @@
 import re
 from typing import Sequence, Tuple
 import string
-import time
 
 
 class Task:
@@ -56,15 +55,12 @@ def process_job(edges: Tuple[str, str], worker_number: int, time_need: int) -> S
                 main_queue, out, tasks, edges, seconds, time_need)
             seconds += 1
             is_all_done = all([task.is_empty() for task in tasks])
-            # print(f"out {out}, main_queue {main_queue}, seconds {seconds}")
-            time.sleep(0.001)
         return out, seconds - 1
 
 
 def process_task(main_queue, out, tasks: Sequence[Task], edges, seconds, time_need):
     for i, task in enumerate(tasks):
         prerequisites = [edge[0] for edge in edges if task.name == edge[1]]
-        # print(f"worker {i}, task {task.name}, task {task.name}, seconds {seconds}")
         if not task.is_empty() and task.is_finished(seconds) and all(each in out for each in prerequisites):
             out.append(task.name)
             main_queue += get_next_tasks(task, main_queue, tasks, edges, out)

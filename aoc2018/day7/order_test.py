@@ -38,7 +38,8 @@ def test_order_with_workers():
     assert time == 15
 
 
-@pytest.mark.timeout(5)
+@pytest.mark.timeout(1)
+@pytest.mark.puzzle
 def test_order_for_puzzle_input():
     puzzle_input = open("aoc2018/day7/instructions.txt", "r")
     content = puzzle_input.read().splitlines()
