@@ -31,8 +31,7 @@ def count_jolt_arrangements(jolts):
     last_3_diff = -1
     for jolt_number in range(len(jolts) - 1):
         if jolts[jolt_number + 1] - jolts[jolt_number] == 3:
-            sub_list = jolts[last_3_diff + 1:jolt_number + 1]
-            sub_list_len = len(sub_list)
+            sub_list_len = jolt_number - last_3_diff
             if sub_list_len == 3:
                 arrangements *= 2
             elif sub_list_len == 4:
