@@ -80,3 +80,13 @@ def test_get_jolt_differences_for_puzzle_input():
     multiple = jolt_1 * jolt_3
 
     assert multiple == 2059
+
+
+def test_count_jolt_arrangements_for_puzzle_input():
+    puzzle_input = open("aoc2020/day10/jolts.txt", "r")
+    content = puzzle_input.read().splitlines()
+    content = list(map(int, content))
+
+    arrangements = count_jolt_arrangements(content)
+
+    assert arrangements == 86812553324672
