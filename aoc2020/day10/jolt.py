@@ -28,5 +28,5 @@ def count_jolt_diff(jolts):
 def count_jolt_arrangements(jolts):
     arrangements = 1
     jolts = prep_jolts(jolts)
-    
+
     return 0
