@@ -1,6 +1,6 @@
 import pytest
 
-from fabric import get_overlap, extract_input, get_the_isolate_id
+from aoc2018.day3.fabric import get_overlap, extract_input, get_the_isolate_id
 
 
 def test_get_overlap():

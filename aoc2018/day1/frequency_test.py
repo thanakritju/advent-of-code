@@ -1,6 +1,6 @@
 import pytest
 
-from frequency import calculate_frequency, calculate_first_reaches_twice
+from aoc2018.day1.frequency import calculate_frequency, calculate_first_reaches_twice
 
 
 @pytest.mark.parametrize(

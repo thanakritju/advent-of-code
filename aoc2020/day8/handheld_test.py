@@ -1,6 +1,6 @@
 import pytest
 
-from handheld import run, find_correct_program
+from aoc2020.day8.handheld import run, find_correct_program
 
 
 def test_run():

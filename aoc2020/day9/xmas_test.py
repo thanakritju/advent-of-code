@@ -1,4 +1,4 @@
-from xmas import find_weakness, exploit_weakness
+from aoc2020.day9.xmas import find_weakness, exploit_weakness
 
 
 def test_find_weakness():

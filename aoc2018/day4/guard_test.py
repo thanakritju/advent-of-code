@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from guard import guard, parse_action, State, reduce_guard, Guard, update_guard, find_most_frequency
+from aoc2018.day4.guard import guard, parse_action, State, reduce_guard, Guard, update_guard, find_most_frequency
 
 
 test_input = [

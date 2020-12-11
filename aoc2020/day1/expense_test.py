@@ -1,6 +1,6 @@
 import pytest
 
-from expense import get_sum_of_two_entries, get_sum_of_three_entries
+from aoc2020.day1.expense import get_sum_of_two_entries, get_sum_of_three_entries
 
 
 def test_get_sum_of_two_entries():

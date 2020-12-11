@@ -1,6 +1,6 @@
 import pytest
 
-from order import order
+from aoc2018.day7.order import order
 
 
 @pytest.mark.timeout(1)

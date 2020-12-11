@@ -1,6 +1,6 @@
 import pytest
 
-from password import password_check, password_check_v2, count_valid_password, count_valid_password_v2
+from aoc2020.day2.password import password_check, password_check_v2, count_valid_password, count_valid_password_v2
 
 
 @pytest.mark.parametrize(

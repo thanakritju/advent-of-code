@@ -1,6 +1,6 @@
 import pytest
 
-from traverse import traverse
+from aoc2020.day3.traverse import traverse
 
 
 test_pattern = [

@@ -1,6 +1,6 @@
 import pytest
 
-from passport import find_field, count_valid_passport, validate_field, count_valid_passport_with_validation
+from aoc2020.day4.passport import find_field, count_valid_passport, validate_field, count_valid_passport_with_validation
 
 
 def test_count_valid_passport():

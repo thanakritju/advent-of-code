@@ -1,6 +1,6 @@
 import pytest
 
-from seat import get_seat_id, get_seat_location, get_missing_id
+from aoc2020.day5.seat import get_seat_id, get_seat_location, get_missing_id
 
 
 @pytest.mark.parametrize(

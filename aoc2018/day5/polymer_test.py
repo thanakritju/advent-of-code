@@ -1,6 +1,6 @@
 import pytest
 
-from polymer import react_polymer, is_reacted, optimized_react_polymer
+from aoc2018.day5.polymer import react_polymer, is_reacted, optimized_react_polymer
 
 
 @pytest.mark.parametrize(

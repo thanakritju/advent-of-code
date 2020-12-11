@@ -1,6 +1,6 @@
 import pytest
 
-from area import biggest_area, area_within_distance
+from aoc2018.day6.area import biggest_area, area_within_distance
 
 
 test_input = [

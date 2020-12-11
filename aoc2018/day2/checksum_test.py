@@ -1,6 +1,6 @@
 import pytest
 
-from checksum import checksum, get_common_id, is_close, drop_duplicate
+from aoc2018.day2.checksum import checksum, get_common_id, is_close, drop_duplicate
 
 
 def test_checksum():

@@ -1,4 +1,4 @@
-from answer import count_answer, count_answered_by_everyone
+from aoc2020.day6.answer import count_answer, count_answered_by_everyone
 
 
 test_input = [

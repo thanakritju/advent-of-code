@@ -1,6 +1,6 @@
 import pytest
 
-from bag import count_bag, extract_bag, get_all_bags
+from aoc2020.day7.bag import count_bag, extract_bag, get_all_bags
 
 
 def test_count_shiny_gold_bag():
