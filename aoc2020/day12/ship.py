@@ -1,10 +1,11 @@
 import math
+from dataclasses import dataclass
 
 
+@dataclass
 class ShipAction:
-    def __init__(self, action_type, value):
-        self.type = action_type
-        self.value = value
+    action_type: str
+    value: int
 
 
 class ShipState:
@@ -81,19 +82,19 @@ def get_distance_with_waypoint(ship_movements):
 
 
 def dispatch(state: ShipState, action: ShipAction):
-    if (action.type == 'F'):
+    if (action.action_type == 'F'):
         state.move(action.value)
-    if (action.type == 'L'):
+    if (action.action_type == 'L'):
         state.turn_left(action.value)
-    if (action.type == 'R'):
+    if (action.action_type == 'R'):
         state.turn_right(action.value)
-    if (action.type == 'N'):
+    if (action.action_type == 'N'):
         state.move_north(action.value)
-    if (action.type == 'W'):
+    if (action.action_type == 'W'):
         state.move_west(action.value)
-    if (action.type == 'S'):
+    if (action.action_type == 'S'):
         state.move_south(action.value)
-    if (action.type == 'E'):
+    if (action.action_type == 'E'):
         state.move_east(action.value)
     return state
 

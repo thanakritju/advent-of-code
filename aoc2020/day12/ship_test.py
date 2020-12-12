@@ -32,4 +32,4 @@ def test_get_distance_for_puzzle_input():
 
     distance = get_distance_with_waypoint(content)
 
-    assert distance == 25
+    assert distance == 61053
