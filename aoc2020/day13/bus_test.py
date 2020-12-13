@@ -43,4 +43,4 @@ def test_get_earliest_bus_for_puzzle_input():
 
     actual = get_earliest_time(content[1])
 
-    assert actual == 0
+    assert actual == 645338524823718
