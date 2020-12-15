@@ -1,4 +1,3 @@
-
 class Number:
     def __init__(self, turn):
         self.last_turn = turn
@@ -18,8 +17,6 @@ class History:
         self.last_spoken_number = None
 
     def add(self, number, turn):
-        # if number == 0:
-        #     print(f"turn {turn} number {number}")
         try:
             self.records[number].add(turn)
         except:
