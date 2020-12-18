@@ -21,6 +21,7 @@ def test_get_multiply():
     assert actual == 1716
 
 
+@pytest.mark.puzzle
 def test_get_error_rate_for_puzzle_input():
     puzzle_input = open("aoc2020/day16/input.txt", "r")
     content = puzzle_input.read()

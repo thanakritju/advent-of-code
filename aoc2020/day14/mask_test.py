@@ -1,3 +1,5 @@
+import pytest
+
 from aoc2020.day14.mask import *
 
 
@@ -27,6 +29,7 @@ def test_get_mask_results():
     assert sum(results.values()) == 208
 
 
+@pytest.mark.puzzle
 def test_get_mask_results_for_puzzle_input():
     puzzle_input = open("aoc2020/day14/input.txt", "r")
     content = puzzle_input.read().splitlines()

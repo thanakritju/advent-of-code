@@ -1,3 +1,5 @@
+import pytest
+
 from aoc2020.day9.xmas import find_weakness, exploit_weakness
 
 
@@ -34,6 +36,7 @@ def test_find_weakness():
     assert actual == 62
 
 
+@pytest.mark.puzzle
 def test_run_for_puzzle_input():
     puzzle_input = open("aoc2020/day9/numbers.txt", "r")
     content = puzzle_input.read().splitlines()

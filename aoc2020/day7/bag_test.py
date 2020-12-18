@@ -56,6 +56,7 @@ def test_extract_bag(test_input, expected):
     assert actual == expected
 
 
+@pytest.mark.puzzle
 def test_count_shiny_gold_bag_for_puzzle_input():
     puzzle_input = open("aoc2020/day7/bags.txt", "r")
     content = puzzle_input.read().splitlines()
@@ -65,7 +66,8 @@ def test_count_shiny_gold_bag_for_puzzle_input():
     assert actual == 139
 
 
-def test_count_shiny_gold_bag_for_puzzle_input():
+@pytest.mark.puzzle
+def test_count_get_all_bags_for_puzzle_input():
     puzzle_input = open("aoc2020/day7/bags.txt", "r")
     content = puzzle_input.read().splitlines()
 
