@@ -19,7 +19,7 @@ def calculate(expressions, precedence=False):
         token = tokens.pop(0)
         if is_sym(token, T_NUMBER):
             output_queue.append(token)
-        elif is_sym(token, T_OPERATIONS):
+        elif is_operator(token):
             while (
                 operator_stacks and
                 not is_sym(operator_stacks[-1], T_LPAREN) and

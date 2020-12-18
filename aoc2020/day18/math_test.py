@@ -38,6 +38,7 @@ def test_calculate(expressions, expected):
     assert actual == expected
 
 
+@pytest.mark.puzzle
 def test_calculate_for_puzzle_input():
     puzzle_input = open("aoc2020/day18/input.txt", "r")
     content = puzzle_input.read().splitlines()
@@ -48,4 +49,4 @@ def test_calculate_for_puzzle_input():
 
     actual = sum([calculate(line, True) for line in content])
 
-    assert actual == 6640667297513
+    assert actual == 451589894841552
