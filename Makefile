@@ -17,6 +17,12 @@ ifndef VIRTUAL_ENV
 endif
 	PYTHONPATH=. pytest --durations=0
 
+test2021:
+ifndef VIRTUAL_ENV
+	$(error must run target inside python virtualenv)
+endif
+	PYTHONPATH=. pytest --durations=0 aoc2021
+
 format:
 ifndef VIRTUAL_ENV
 	$(error must run target inside python virtualenv)
