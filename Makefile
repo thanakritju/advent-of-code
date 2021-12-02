@@ -3,7 +3,10 @@
 default: unittest
 
 install:
-	pipenv install --dev --skip-lock
+	python3 -m pipenv install --dev --skip-lock
+
+shell:
+	python3 -m pipenv shell
 
 unittest:
 ifndef VIRTUAL_ENV
