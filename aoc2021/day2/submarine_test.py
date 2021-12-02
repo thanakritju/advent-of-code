@@ -25,4 +25,4 @@ def test_get_multiplication_of_coordinate_for_puzzle():
 
     actual = get_multiplication_of_coordinate(content)
 
-    assert actual == 1527
+    assert actual == 2036120
