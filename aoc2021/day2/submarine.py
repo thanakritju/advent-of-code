@@ -11,8 +11,9 @@ def get_multiplication_of_coordinate(actions):
             y += int(value)
         if command == "up":
             y -= int(value)
-        
-    return x*y 
+
+    return x*y
+
 
 def get_multiplication_of_coordinate_with_aim(actions):
     x = 0
@@ -29,5 +30,5 @@ def get_multiplication_of_coordinate_with_aim(actions):
             aim += int(value)
         if command == "up":
             aim -= int(value)
-        
-    return x*y 
+
+    return x*y
