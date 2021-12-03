@@ -3,10 +3,10 @@ class Node:
         self.children = []
         self.metadata_entries = []
         self.parent = parent
-    
+
     def add_child(self, child):
         self.children.append(child)
-    
+
     def add_metadata(self, entry):
         self.metadata_entries.append(entry)
 
