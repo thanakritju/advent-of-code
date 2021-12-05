@@ -19,7 +19,6 @@ def get_diagnostic_v2(binarys):
     oxgens = binarys
     co2s = binarys
     length_of_binary = len(binarys[0])
-    length_of_binarys = len(binarys)
 
     for index in range(length_of_binary):
         if len(oxgens) == 1:

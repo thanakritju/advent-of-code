@@ -37,3 +37,9 @@ ifndef VIRTUAL_ENV
 	$(error must run target inside python virtualenv)
 endif
 	autopep8 --in-place --recursive .
+
+lint:
+ifndef VIRTUAL_ENV
+	$(error must run target inside python virtualenv)
+endif
+	pylint aoc2021

@@ -8,8 +8,7 @@ pytest = "*"
 autopep8 = "*"
 pytest-timeout = "*"
 numpy = "*"
-
-[packages]
+pylint = "*"
 
 [requires]
 python_version = "3.8"
