@@ -66,12 +66,7 @@ def get_overlapped_points(content):
             continue
         line.draw_line(map)
 
-    count = 0
-    for _, value in map.items():
-        if value > 1:
-            count += 1
-
-    return count
+    return count_items(map)
 
 
 def get_overlapped_points_with_diagonal(content):
@@ -80,6 +75,10 @@ def get_overlapped_points_with_diagonal(content):
     for line in lines:
         line.draw_line(map)
 
+    return count_items(map)
+
+
+def count_items(map):
     count = 0
     for _, value in map.items():
         if value > 1:
