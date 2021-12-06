@@ -12,25 +12,13 @@ unittest:
 ifndef VIRTUAL_ENV
 	$(error must run target inside python virtualenv)
 endif
-	PYTHONPATH=. pytest -m "not puzzle"
+	PYTHONPATH=. pytest -m "not puzzle" $(folder)
 
 test:
 ifndef VIRTUAL_ENV
 	$(error must run target inside python virtualenv)
 endif
-	PYTHONPATH=. pytest --durations=0
-
-test2018:
-ifndef VIRTUAL_ENV
-	$(error must run target inside python virtualenv)
-endif
-	PYTHONPATH=. pytest --durations=0 aoc2018
-
-test2021:
-ifndef VIRTUAL_ENV
-	$(error must run target inside python virtualenv)
-endif
-	PYTHONPATH=. pytest --durations=0 aoc2021
+	PYTHONPATH=. pytest --durations=0 $(folder)
 
 format:
 ifndef VIRTUAL_ENV

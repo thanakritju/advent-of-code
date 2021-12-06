@@ -13,10 +13,16 @@ from aoc2018.day9.marble_mania import get_high_score
         (21, 6111, 54718),
         (30, 5807, 37305),
         (419, 71052, 412117),
-        (419, 7105200, 3444129546),
     ]
 )
 def test_get_high_score(players, last_marble_worth, high_score):
     actual = get_high_score(players, last_marble_worth)
 
     assert actual == high_score
+
+
+@pytest.mark.puzzle
+def test_get_high_score_for_puzzle():
+    actual = get_high_score(419, 7105200)
+
+    assert actual == 3444129546
