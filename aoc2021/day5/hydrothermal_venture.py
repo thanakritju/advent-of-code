@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 class Point:
     def __init__(self, x: int, y: int) -> None:
         self.x = x
@@ -52,14 +54,11 @@ class Line:
         if not self.is_straight():
             return
         for point in self.get_covered_points():
-            if point in map:
-                map[point] += 1
-            else:
-                map[point] = 1
+            map[point] += 1
 
 
 def get_overlapped_points(content):
-    map = {}
+    map = defaultdict(int)
     lines = load_data(content)
     for line in lines:
         if line.is_diagonal():
@@ -70,7 +69,7 @@ def get_overlapped_points(content):
 
 
 def get_overlapped_points_with_diagonal(content):
-    map = {}
+    map = defaultdict(int)
     lines = load_data(content)
     for line in lines:
         line.draw_line(map)
@@ -79,12 +78,7 @@ def get_overlapped_points_with_diagonal(content):
 
 
 def count_items(map):
-    count = 0
-    for _, value in map.items():
-        if value > 1:
-            count += 1
-
-    return count
+    return sum([1 for value in map.values() if value > 1])
 
 
 def load_data(content):

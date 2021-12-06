@@ -1,7 +1,10 @@
+from collections import defaultdict
+
+
 def get_lanternfish(lanternfishs, days):
-    set_fish = {}
+    set_fish = defaultdict(int)
     for each_fish in lanternfishs:
-        add_item_in_set(set_fish, each_fish)
+        set_fish[each_fish] += 1
 
     for _ in range(days):
         set_fish = update_fish(set_fish)
@@ -10,19 +13,12 @@ def get_lanternfish(lanternfishs, days):
 
 
 def update_fish(set_fish):
-    new_set = {}
+    new_set = defaultdict(int)
     for key, value in set_fish.items():
         if key == 0:
-            add_item_in_set(new_set, 6, value)
-            add_item_in_set(new_set, 8, value)
+            new_set[6] += value
+            new_set[8] += value
         else:
-            add_item_in_set(new_set, key - 1, value)
+            new_set[key - 1] += value
 
     return new_set
-
-
-def add_item_in_set(s, k, v=1):
-    if k in s:
-        s[k] += v
-    else:
-        s[k] = v
