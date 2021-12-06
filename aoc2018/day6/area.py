@@ -16,7 +16,7 @@ def biggest_area(coordinates: StringInput) -> int:
     space = create_space(max_x, max_y)
 
     for row_number, row in enumerate(space):
-        for column_number, column in enumerate(row):
+        for column_number in range(len(row)):
             distances = [
                 manhattan_distance(
                     condinate[1], condinate[0], column_number, row_number)
@@ -39,7 +39,7 @@ def area_within_distance(coordinates: StringInput, sum_distances: int) -> int:
 
     area = 0
     for row_number, row in enumerate(space):
-        for column_number, column in enumerate(row):
+        for column_number in range(len(row)):
             distances = [
                 manhattan_distance(
                     condinate[1], condinate[0], column_number, row_number)
@@ -61,8 +61,8 @@ def get_infinite_canidates(space: Space) -> Sequence[int]:
 
 def get_area_for_each_canidates(space: Space) -> Dict[int, int]:
     area = Counter()
-    for row_number, row in enumerate(space):
-        for column_number, canidate in enumerate(row):
+    for row in space:
+        for canidate in row:
             area[canidate] += 1
     return area
 
@@ -82,7 +82,7 @@ def parse(coordinates: StringInput) -> CoordinateList:
 
 
 def create_space(width: int, height: int) -> Space:
-    return [[0 for column in range(width)] for row in range(height)]
+    return [[0 for _ in range(width)] for _ in range(height)]
 
 
 def render_space(space: Space):

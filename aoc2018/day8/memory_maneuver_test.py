@@ -38,4 +38,4 @@ def test_get_multiplication_of_coordinate_v2_for_puzzle():
 
     actual = get_sum_of_all_metadata_entries_v2(content)
 
-    assert actual == 2036120
+    assert actual == 37560
