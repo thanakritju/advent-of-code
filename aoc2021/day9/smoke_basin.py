@@ -42,19 +42,20 @@ def get_basin_area(i, j, locations):
 
 
 def is_lowest_point(i, j, locations):
-    return all([locations[j][i] < locations[y][x] for x, y in get_neighbors(i, j, locations)])
+    return all([
+        locations[j][i] < locations[y][x]
+        for x, y in get_neighbors(i, j, locations)
+    ])
 
 
 def get_neighbors(i, j, locations):
     len_y = len(locations)
     len_x = len(locations[0])
-    for each in [(1, 0), (0, 1), (-1, 0), (0, -1)]:
-        x = i + each[0]
-        y = j + each[1]
+    for dx, dy in [(1, 0), (0, 1), (-1, 0), (0, -1)]:
+        x = i + dx
+        y = j + dy
 
-        if (x < 0 or y < 0 or x >= len_x or y >= len_y):
-            continue
-        else:
+        if (x >= 0 and y >= 0 and x < len_x and y < len_y):
             yield (x, y)
 
 
