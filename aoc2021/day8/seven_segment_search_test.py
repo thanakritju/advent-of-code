@@ -43,4 +43,4 @@ def test_get_sum_of_output_for_puzzle():
 
     actual = get_sum_of_output(content)
 
-    assert actual == 247
+    assert actual == 933305
