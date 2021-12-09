@@ -6,10 +6,43 @@ def count_low_points(lines):
     count = 0
     for j in range(len_y):
         for i in range(len_x):
-            if all([locations[j][i] < locations[y][x] for x, y in get_neighbors(i, j, locations)]):
+            if is_lowest_point(i, j, locations):
                 count += locations[j][i] + 1
 
     return count
+
+
+def largest_three_basin(lines):
+    locations = load_data(lines)
+    len_y = len(locations)
+    len_x = len(locations[0])
+
+    areas = []
+    for j in range(len_y):
+        for i in range(len_x):
+            if is_lowest_point(i, j, locations):
+                areas.append(get_basin_area(i, j, locations))
+
+    areas = sorted(areas)
+    return areas[-1] * areas[-2] * areas[-3]
+
+
+def get_basin_area(i, j, locations):
+    visited = {}
+    queue = [(i, j)]
+    while queue:
+        x, y = queue.pop()
+        if (x, y) not in visited:
+            visited[(x, y)] = True
+            for each_x, each_y in get_neighbors(x, y, locations):
+                if locations[y][x] < locations[each_y][each_x] and locations[each_y][each_x] != 9:
+                    queue.append((each_x, each_y))
+
+    return len(visited)
+
+
+def is_lowest_point(i, j, locations):
+    return all([locations[j][i] < locations[y][x] for x, y in get_neighbors(i, j, locations)])
 
 
 def get_neighbors(i, j, locations):
