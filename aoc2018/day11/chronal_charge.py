@@ -1,69 +1,57 @@
-def get_power_level(x, y, serial_number):
+def power(x, y, serial_number):
     rack_id = x + 10
     return int(str((rack_id * y + serial_number) * rack_id // 100)[-1]) - 5
 
 
-def get_coordinate(serial_number, square_size):
-    cache = {}
-    cell_size = 300
-    cells = [
-        [get_power_level(i, j, serial_number) for i in range(cell_size)]
-        for j in range(cell_size)
-    ]
+def get_coordinate(serial_number, ws):
+    sums = get_sums(serial_number)
 
-    return find_max_value(cells, cell_size, square_size, cache)
-
-
-def find_max_value(cells, cell_size, square_size, cache):
     max_value = 0
     max_x = 0
     max_y = 0
-    for j in range(cell_size - square_size + 1):
-        for i in range(cell_size - square_size + 1):
-            s = get_window_sum(i, j, cells, square_size, cache)
 
-            if s > max_value:
-                max_value = s
+    for j in range(300 - ws):
+        for i in range(300 - ws):
+            window_sum = sums[j][i] + sums[j + ws][i + ws] - sums[j + ws][i] - sums[j][i + ws]
+            if window_sum > max_value:
+                max_value = window_sum
                 max_x = i
                 max_y = j
 
-    return max_x, max_y, max_value
-
+    return max_x + 1, max_y + 1
 
 def get_coordinate_and_size(serial_number):
-    cache = {}
-    cell_size = 300
-    cells = [
-        [get_power_level(i, j, serial_number) for i in range(cell_size)]
-        for j in range(cell_size)
-    ]
+    sums = get_sums(serial_number)
 
     max_value = 0
+    max_size = 0
     max_x = 0
     max_y = 0
 
-    for i in range(300):
-        x, y, value = find_max_value(cells, cell_size, i + 1, cache)
-        if value > max_value:
-            max_value = value
-            max_x = x
-            max_y = y
+    for ws in range(1, 300):
+        for j in range(300 - ws):
+            for i in range(300 - ws):
+                window_sum = sums[j][i] + sums[j + ws][i + ws] - sums[j + ws][i] - sums[j][i + ws]
+                if window_sum > max_value:
+                    max_value = window_sum
+                    max_size = ws
+                    max_x = i
+                    max_y = j
 
-    return max_x, max_y, max_value
+    return max_x + 1, max_y + 1, max_size
 
 
-def get_window_sum(x, y, cells, window_size, cache):
-    if (x, y, window_size) in cache:
-        return cache[(x, y, window_size)]
-    elif window_size == 1:
-        return cells[y][x]
-    else:
-        s = sum([
-            cells[j][x + window_size - 1]
-            for j in range(y, y + window_size)
-        ]) + sum([
-            cells[y + window_size - 1][i]
-            for i in range(x, x + window_size - 1)
-        ]) + get_window_sum(x, y, cells, window_size - 1, cache)
-        cache[(x, y, window_size)] = s
-        return s
+def get_sums(serial_number):
+    sums = [
+        [0 for _ in range(300)]
+        for _ in range(300)
+    ]
+
+    for j in range(300):
+        for i in range(300):
+            if i == 0 and j == 0:
+                sums[j][i] = power(i, j, serial_number)
+            else:
+                sums[j][i] = power(i, j, serial_number) + sums[j][i - 1] + sums[j - 1][i] - sums[j - 1][i - 1]
+
+    return sums
