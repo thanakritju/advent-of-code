@@ -12,13 +12,15 @@ def get_coordinate(serial_number, ws):
 
     for j in range(300 - ws):
         for i in range(300 - ws):
-            window_sum = sums[j][i] + sums[j + ws][i + ws] - sums[j + ws][i] - sums[j][i + ws]
+            window_sum = sums[j][i] + sums[j + ws][i + ws] - \
+                sums[j + ws][i] - sums[j][i + ws]
             if window_sum > max_value:
                 max_value = window_sum
                 max_x = i
                 max_y = j
 
     return max_x + 1, max_y + 1
+
 
 def get_coordinate_and_size(serial_number):
     sums = get_sums(serial_number)
@@ -31,7 +33,8 @@ def get_coordinate_and_size(serial_number):
     for ws in range(1, 300):
         for j in range(300 - ws):
             for i in range(300 - ws):
-                window_sum = sums[j][i] + sums[j + ws][i + ws] - sums[j + ws][i] - sums[j][i + ws]
+                window_sum = sums[j][i] + sums[j + ws][i +
+                                                       ws] - sums[j + ws][i] - sums[j][i + ws]
                 if window_sum > max_value:
                     max_value = window_sum
                     max_size = ws
@@ -52,6 +55,7 @@ def get_sums(serial_number):
             if i == 0 and j == 0:
                 sums[j][i] = power(i, j, serial_number)
             else:
-                sums[j][i] = power(i, j, serial_number) + sums[j][i - 1] + sums[j - 1][i] - sums[j - 1][i - 1]
+                sums[j][i] = power(
+                    i, j, serial_number) + sums[j][i - 1] + sums[j - 1][i] - sums[j - 1][i - 1]
 
     return sums
