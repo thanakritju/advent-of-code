@@ -12,6 +12,7 @@ def test_count_plants():
     assert actual == 325
 
 
+@pytest.mark.puzzle
 def test_count_plants_for_puzzle():
     puzzle_input = open("aoc2018/day12/input.txt", "r")
     content = puzzle_input.read().split("\n\n")
@@ -21,6 +22,7 @@ def test_count_plants_for_puzzle():
     assert actual == 3903
 
 
+@pytest.mark.puzzle
 def test_count_plants_for_puzzle_part2():
     puzzle_input = open("aoc2018/day12/input.txt", "r")
     content = puzzle_input.read().split("\n\n")
