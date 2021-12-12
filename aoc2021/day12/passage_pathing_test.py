@@ -46,10 +46,10 @@ def test_count_paths_for_puzzle():
     assert actual == 4707
 
 
-# def test_count_paths_v2_for_puzzle():
-#     puzzle_input = open("aoc2021/day12/input.txt", "r")
-#     content = puzzle_input.read().splitlines()
+def test_count_paths_v2_for_puzzle():
+    puzzle_input = open("aoc2021/day12/input.txt", "r")
+    content = puzzle_input.read().splitlines()
 
-#     actual = count_paths_v2(content)
+    actual = count_paths_v2(content)
 
-#     assert actual == 0
+    assert actual == 130493

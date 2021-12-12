@@ -1,6 +1,6 @@
 def count_paths(content):
     map = load_data(content)
-    histories = []
+    histories = set()
     dfs(map, "start", [], histories)
     return len(histories)
 
@@ -8,7 +8,7 @@ def count_paths(content):
 def dfs(map, node, history, histories):
     history.append(node)
     if node == "end":
-        histories.append(history)
+        histories.add("".join(history))
         return
     else:
         for each in map[node]:
@@ -18,7 +18,7 @@ def dfs(map, node, history, histories):
 
 def count_paths_v2(content):
     map = load_data(content)
-    histories = []
+    histories = set()
     for node in map.keys():
         if is_small_cave(node):
             dfs_v2(map, "start", [], histories, node)
@@ -27,8 +27,8 @@ def count_paths_v2(content):
 
 def dfs_v2(map, node, history, histories, special_small_cave):
     history.append(node)
-    if node == "end" and history not in histories:
-        histories.append(history)
+    if node == "end":
+        histories.add("".join(history))
         return
     else:
         for each in map[node]:
