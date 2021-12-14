@@ -37,6 +37,7 @@ def test_count_paths(file_name, expected):
     assert actual == expected
 
 
+@pytest.mark.puzzle
 def test_count_paths_for_puzzle():
     puzzle_input = open("aoc2021/day12/input.txt", "r")
     content = puzzle_input.read().splitlines()
@@ -46,6 +47,7 @@ def test_count_paths_for_puzzle():
     assert actual == 4707
 
 
+@pytest.mark.puzzle
 def test_count_paths_v2_for_puzzle():
     puzzle_input = open("aoc2021/day12/input.txt", "r")
     content = puzzle_input.read().splitlines()
