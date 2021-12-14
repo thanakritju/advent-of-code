@@ -19,16 +19,6 @@ def test_fold_for_puzzle():
 
     actual = fold(content, 1)
 
-    assert actual == 17
-
-
-@pytest.mark.puzzle
-def test_fold_for_puzzle():
-    puzzle_input = open("aoc2021/day13/input.txt", "r")
-    content = puzzle_input.read().split("\n\n")
-
-    actual = fold(content, 1)
-
     assert actual == 735
 
 
