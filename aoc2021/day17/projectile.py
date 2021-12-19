@@ -22,7 +22,7 @@ def get_all_initial_velocities(content):
                 vx, vy, min_x, max_x, min_y, max_y)
             if is_hit_target:
                 s.add((vx, vy))
-    print(s)
+
     return len(s)
 
 
