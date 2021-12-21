@@ -3,7 +3,7 @@ import pytest
 from aoc2021.day20.image import process
 
 
-def test_process_magnitude():
+def test_process():
     puzzle_input = open(f"aoc2021/day20/sample.txt", "r")
     content = puzzle_input.read()
 
